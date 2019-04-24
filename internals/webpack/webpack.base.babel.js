@@ -4,6 +4,19 @@
 
 const path = require('path');
 const webpack = require('webpack');
+// Please read the following link if
+// you have no idea how to use this feature
+// https://github.com/motdotla/dotenv
+require('dotenv').config({ silent: true });
+
+// trace which loader is deprecated
+// feel free to remove that if you don't need this feature
+process.traceDeprecation = false;
+
+// Environment variable injection
+// ================================================================================
+const packageJSON = require('../../package.json');
+process.env.PACKAGE_VERSION = packageJSON.version;
 
 module.exports = options => ({
   mode: options.mode,
